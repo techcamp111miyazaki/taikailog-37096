@@ -10,8 +10,6 @@
 
 ### Association
 - has_many :events
-- has_many :turns
-- has_many :fields
 - has_many :matches
 - has_many :favorites
 
@@ -26,31 +24,13 @@
 
 ### Association
 - belongs_to :user
-- has_many :turns
-
-## turnテーブル
-| Column    | Type    | Options     |
-| --------- | ------- | ----------- |
-| turn_name | string  | null: false |
-
-### Association
-- belongs_to :user
-- belongs_to :event
-- has_many :fields
-
-## fieldテーブル
-| Column     | Type    | Options     |
-| ---------- | ------- | ----------- |
-| field_name | string  | null: false |
-
-### Association
-- belongs_to :user
-- belongs_to :turn
 - has_many :matches
 
 ## matchテーブル
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
+| turn_id       | integer | null: false |
+| field_id      | integer | null: false | 
 | player_name_1 | string  | null: false |
 | belongs_1     | string  | null: false |
 | score_1       | integer |             |
@@ -61,7 +41,7 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :field
+- belongs_to :event
 - has_many :favorites
 
 ## favoriteテーブル
