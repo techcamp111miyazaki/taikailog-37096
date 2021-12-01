@@ -16,7 +16,7 @@ class EventsController < ApplicationController
       redirect_to root_path
     else
       render :new
-      flash.now[:alert] = '新規投稿に失敗しました'
+      flash.now[:alert] = 'Fail in'
     end
   end
 
