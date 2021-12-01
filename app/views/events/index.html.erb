@@ -1,8 +1,12 @@
 <%= render "shared/header" %>
 <main>
-  <div class="d-grid gap-2 col-8 mx-auto">
-    <%= link_to "New Event", new_event_path, class:"btn btn-outline-primary mt-5"%>
-  </div>
+  <% if user_signed_in?%>
+    <% if current_user.admin? %>
+      <div class="d-grid gap-2 col-8 mx-auto">
+        <%= link_to "New Event", new_event_path, class:"btn btn-outline-primary mt-5"%>
+      </div>
+    <% end %>
+  <% end %>
   <div class="album py-5 bg-light">
     <div class="container">
 
