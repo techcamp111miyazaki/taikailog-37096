@@ -16,7 +16,7 @@
 ## eventテーブル
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
-| title         | string  | null: false |
+| event_title   | string  | null: false |
 | place         | string  | null: false |
 | prefecture_id | integer | null: false |
 | date          | date    | null: false |
