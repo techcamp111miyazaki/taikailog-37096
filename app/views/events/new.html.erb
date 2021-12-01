@@ -1,0 +1,44 @@
+<%= render "shared/header" %>
+<main>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <h3 class="text-white" >Sign up</h3>
+    </div>
+  </div>
+
+<%= form_with model: @event, url: user_registration_path, class: "justify-content-center", local: true do |f| %>
+  <%= render "shared/error_messages", model: f.object%>
+  <div class="bg-light">
+  <div class="container">
+  <div class="justify-content-center">
+    <div >
+      <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Name</label>
+      <%= f.text_area :name, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Name" %>
+    </div>
+    <div >
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <%# <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"> %>
+      <%= f.email_field :email, class:"form-control", id:"exampleFormControlInput1", placeholder:"name@example.com" %>
+    </div>
+    <div >
+      <label for="exampleFormControlInput1" class="form-label">Password (6 characters minimum length)</label>
+      <%# <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password"> %>
+      <%= f.password_field :password, class:"form-control", id:"exampleFormControlInput1", placeholder:"password123" %>
+    </div>
+    <div >
+      <label for="exampleFormControlInput1" class="form-label">Password Confermation</label>
+      <%# <input type="password_confermation" class="form-control" id="exampleFormControlInput1" placeholder="password confermation"> %>
+      <%= f.password_field :password_confirmation, class:"form-control", id:"exampleFormControlInput1", placeholder:"password123" %>
+    </div>
+
+    <div class="d-grid gap-2 d-md-block">
+      <%= f.submit "Sign up", class:"btn btn-outline-success mt-5 mb-5" %>
+    </div>
+  </div>
+  </div>
+  </div>
+<% end %>
+
+</main>
+<%= render "shared/footer" %>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
