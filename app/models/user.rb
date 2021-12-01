@@ -7,4 +7,6 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i,message: 'error' }
   end
+
+  has_many :events
 end

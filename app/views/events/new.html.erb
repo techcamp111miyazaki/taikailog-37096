@@ -1,0 +1,59 @@
+<%= render "shared/header_second" %>
+<main>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <h3 class="text-white" >Create Event</h3>
+    </div>
+  </div>
+
+  <%= form_with model: @event, url: events_path, method: :post, local: true do |f| %>
+    <%= render "shared/error_messages", model: f.object%>
+    <div class="bg-light">
+      <div class="container">
+        <div class="justify-content-center">
+          <div >
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Event Title</label>
+            <%= f.text_area :event_title, class:"form-control", id:"exampleFormControlInput1" , placeholder:"第OO回  xxx大会" %>
+          </div>
+          <div >
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Place</label>
+            <%= f.text_area :place, class:"form-control", id:"exampleFormControlInput1" , placeholder:"a立総合競技場" %>
+          </div>
+          <div >
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Prefecture</label>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"form-select"}) %>
+          </div>
+          <div >
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Genre</label>
+            <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-select"}) %>
+          </div>
+          <div>
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Date</label>
+            <%= raw sprintf(
+                        f.date_select(
+                          :date,
+                          class:'form-select',
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: 1930,
+                          end_year: (Time.now.year - 5),
+                          date_separator: '%s'),
+                        " 年 ", " 月 ") + " 日 " %>
+          </div>
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label align-items-center mt-5">Event Image only one</label>
+            <%= f.file_field :image, name: 'event[image]', class: "form-control", id: "formFileMultiple" %>
+            <%# <input class="form-control" type="image" id="formFileMultiple" multiple> %>
+          </div>
+
+          <div class="d-grid gap-2 d-md-block">
+            <%= f.submit "Create", class:"btn btn-outline-success mt-5 mb-5" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</main>
+<%= render "shared/footer" %>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
