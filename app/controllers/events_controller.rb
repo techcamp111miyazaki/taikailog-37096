@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :redirect_index, only: [:new, :create]
 
   def index
+    @events = Event.order('created_at DESC')
   end
 
   def new
@@ -26,6 +27,6 @@ class EventsController < ApplicationController
   end
   
   def redirect_index
-    redirect_to root_path if current_user.admin = 0
+    redirect_to root_path if current_user.admin == false
   end
 end
