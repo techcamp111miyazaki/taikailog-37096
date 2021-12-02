@@ -4,8 +4,8 @@ class Match < ApplicationRecord
   validates :order_number, presence: true, numericality: { only_integer: true, message: "input only half-numbers" }
   validates :player_name_1, presence: true
   validates :belongs_1, presence: true
-  # validates :score_1, numericality: { message: "input only half-numbers" }
-  # validates :score_2, numericality: { message: "input only half-numbers" }
+  validates :score_1, numericality: { message: "input only half-numbers" }, allow_nil: true
+  validates :score_2, numericality: { message: "input only half-numbers" }, allow_nil: true
 
   belongs_to :user
   belongs_to :event
