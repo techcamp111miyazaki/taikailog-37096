@@ -30,12 +30,13 @@
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
 | turn_id       | integer | null: false |
-| field_id      | integer | null: false | 
+| field_id      | integer | null: false |
+| order_number  | integer | null: false |
 | player_name_1 | string  | null: false |
 | belongs_1     | string  | null: false |
 | score_1       | integer |             |
-| player_name_2 | string  | null: false |
-| belongs_2     | string  | null: false |
+| player_name_2 | string  |             |
+| belongs_2     | string  |             |
 | score_2       | integer |             |
 | log           | text    |             |
 
