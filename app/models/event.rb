@@ -4,7 +4,10 @@ class Event < ApplicationRecord
   validates :prefecture_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :genre_id,      presence: true, numericality: { other_than: 1 , message: "can't be blank"}  
   validates :date,          presence: true
+  
   belongs_to :user
+  has_many :matches
+
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions

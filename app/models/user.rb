@@ -9,4 +9,5 @@ class User < ApplicationRecord
   end
 
   has_many :events
+  has_many :matches
 end

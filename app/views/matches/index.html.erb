@@ -1,0 +1,283 @@
+<%= render "shared/header_matches" %>
+<main>
+<% if user_signed_in?%>
+  <% if @event.user.id == current_user.id %>
+    <div class="d-grid gap-2 col-8 mx-auto">
+      <%= link_to "New Match Log", new_event_match_path(@event), class:"btn btn-outline-primary mt-5"%>
+    </div>
+  <% end %>
+<% end %>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <% if @matches.present?%>
+      <% @matches.each do |match| %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary"><%= match.turn.name %></p>
+            <p class="card-text text-center "><%= match.field.name %></p>
+            <div class="container"> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong><%= match.player_name_1 %></strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong><%= match.player_name_2 %></strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#<%= match.order_number %></p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary">第一回戦</p>
+            <p class="card-text text-center ">第一試合場</p>
+            <div container> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名1</strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名2</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#順番</p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary">第一回戦</p>
+            <p class="card-text text-center ">第一試合場</p>
+            <div container> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名1</strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名2</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#順番</p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary">第一回戦</p>
+            <p class="card-text text-center ">第一試合場</p>
+            <div container> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名1</strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名2</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#順番</p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary">第一回戦</p>
+            <p class="card-text text-center ">第一試合場</p>
+            <div container> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名1</strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名2</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#順番</p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary">第一回戦</p>
+            <p class="card-text text-center ">第一試合場</p>
+            <div container> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名1</strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名2</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#順番</p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary">第一回戦</p>
+            <p class="card-text text-center ">第一試合場</p>
+            <div container> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名1</strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名2</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#順番</p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary">第一回戦</p>
+            <p class="card-text text-center ">第一試合場</p>
+            <div container> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名1</strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名2</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#順番</p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text text-center text-primary">第一回戦</p>
+            <p class="card-text text-center ">第一試合場</p>
+            <div container> 
+              <div class="row">
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名1</strong></p>
+                </div>
+                <div class="col">
+                  <p class="card-text text-center"> ー </p>
+                </div>
+                <div class="col-5">
+                  <p class="card-text text-center"><strong>選手名2</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <small class="text-muted"><p class="card-text text-center text-secondary">#順番</p></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<%= render "shared/footer" %>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
