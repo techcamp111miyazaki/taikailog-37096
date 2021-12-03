@@ -1,0 +1,56 @@
+<%= render "shared/header_second" %>
+<main>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <%= link_to event_matches_path(@match.event.id), class:"text-decoration-none" do %>
+        <h3 class="text-white" >Match Log</h3>
+      <% end %>
+    </div>
+  </div>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p class="card-text text-center text-primary h2"><%= @match.turn.name %></p>
+              <p class="card-text text-center h3"><%= @match.field.name %></p>
+              <div class="container">
+                <div class="row">
+                  <div class="col-5">
+                    <p class="card-text text-center h4"><strong><%= @match.player_name_1 %></strong></p>
+                  </div>
+                  <div class="col">
+                    <p class="card-text text-center h4"><strong> ー </strong></p>
+                  </div>
+                  <div class="col-5">
+                    <p class="card-text text-center h4"><strong><%= @match.player_name_2 %></strong></p>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-5">
+                    <p class="card-text text-center h4"><strong><%= @match.belongs_1 %></strong></p>
+                    <p class="card-text text-center h4"><strong><%= @match.score_1 %></strong></p>
+                  </div>
+                  <div class="col">
+                  <p class="card-text text-center text-secondary h4">#<%= @match.order_number %></p>
+                  </div>
+                  <div class="col-5">
+                    <p class="card-text text-center h4"><strong><%= @match.belongs_2 %></strong></p>
+                    <p class="card-text text-center h4"><strong><%= @match.score_2 %></strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row d-flex justify-content-center" >
+                 <div class="border border-2 text-center mt-3" style="width: 75%;"><%= safe_join(@match.log.split("\n"),tag(:br)) %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+<%= render "shared/footer" %>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
