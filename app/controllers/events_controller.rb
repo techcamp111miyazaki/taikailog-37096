@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :redirect_index, only: [:new, :create]
   before_action :set_event, only: [:edit, :update, :destroy]
+  before_action :redirect_not_admin, only: [:edit, :update, :destroy]
 
   def index
     @events = Event.order('created_at DESC')
