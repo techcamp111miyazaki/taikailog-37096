@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
   before_action :set_event
   before_action :set_match, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_index, only: [:new, :create]
+  before_action :redirect_index, except: [:index, :show]
 
   def index
     @matches = @event.matches
