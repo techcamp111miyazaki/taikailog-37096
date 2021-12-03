@@ -16,22 +16,46 @@
           <div class="card shadow-sm">
             <%= link_to event_match_path(@event, match.id), class:"text-decoration-none" do %>
               <div class="card-body">
-                <p class="card-text text-center text-primary"><%= match.turn.name %></p>
-                <p class="card-text text-center text-black"><%= match.field.name %></p>
+                <p class="card-text text-center text-primary"><strong><%= match.turn.name %></strong></p>
+                <p class="card-text text-center text-black"><strong><%= match.field.name %></strong></p>
                 <div class="container"> 
                   <div class="row">
                     <div class="col-5">
+                    <% if match.score_1.present? && match.score_2.present? %>
+                      <% if match.score_1 < match.score_2 %>
+                        <p class="card-text text-center text-black-50"><%= match.player_name_1 %></p>
+                      <% else %>
+                        <p class="card-text text-center text-black"><strong><%= match.player_name_1 %></strong></p>
+                      <% end %>
+                    <% else %>
                       <p class="card-text text-center text-black"><strong><%= match.player_name_1 %></strong></p>
+                    <% end %>
                     </div>
                     <div class="col">
                       <p class="card-text text-center text-black"> ー </p>
                     </div>
                     <div class="col-5">
+                    <% if match.score_1.present? && match.score_2.present? %>
+                      <% if match.score_1 > match.score_2 %>
+                        <p class="card-text text-center text-black-50"><%= match.player_name_2 %></p>
+                      <% else %>
+                        <p class="card-text text-center text-black"><strong><%= match.player_name_2 %></strong></p>
+                      <% end %>
+                    <% else %>
                       <p class="card-text text-center text-black"><strong><%= match.player_name_2 %></strong></p>
+                    <% end %>
                     </div>
                   </div>
                   <div class="d-flex flex-row-reverse">
-                    <small class="text-muted">#<%= match.order_number %></small>
+                    <% if match.order_number % 10 == 1 %>
+                      <small class="text-muted">#<%= match.order_number %>st</small>
+                    <% elsif match.order_number % 10 == 2 %>
+                      <small class="text-muted">#<%= match.order_number %>nd</small>
+                    <% elsif match.order_number % 10 == 3 %>
+                      <small class="text-muted">#<%= match.order_number %>rd</small>
+                    <% else %>
+                      <small class="text-muted">#<%= match.order_number %>th</small>
+                    <% end %>
                   </div>
                 </div>
               </div>
