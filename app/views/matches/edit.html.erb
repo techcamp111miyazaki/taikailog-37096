@@ -1,0 +1,80 @@
+<%= render "shared/header_second" %>
+<main>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <h3 class="text-white" >Edit Log</h3>
+    </div>
+  </div>
+
+  <%= form_with model: @match, url: event_match_path(@event.id), method: :patch, local: true do |f| %>
+    <%= render "shared/error_messages", model: f.object%>
+    <div class="bg-light">
+      <div class="container">
+        <div class="justify-content-center">
+          <div >
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Turn</label>
+            <%= f.collection_select(:turn_id, Turn.all, :id, :name, {}, {class:"form-select"}) %>
+          </div>
+          <div >
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Field</label>
+            <%= f.collection_select(:field_id, Field.all, :id, :name, {}, {class:"form-select"}) %>
+          </div>
+          <div >
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Order Number</label>
+            <div class="d-flex flex-row">
+              <%= f.text_field :order_number, class:"form-control", id:"exampleFormControlInput1" , placeholder:"OO" %>
+              <div >
+                <span class="input-group-text">試合目</span>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <%# Player1について %>
+              <div class="col">
+                <div >
+                  <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Player1 Name</label>
+                  <%= f.text_field :player_name_1, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Name of Player1" %>
+                </div>
+                <div >
+                  <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Player1 Belongs</label>
+                  <%= f.text_field :belongs_1, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Belonging of Player1" %>
+                </div>
+                <div >
+                  <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Player1 Score</label>
+                  <%= f.text_field :score_1, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Score of Player1" %>
+                </div>
+              </div>
+              <%# Player1について %>
+              <%# Player2について %>
+              <div class="col">
+                <div >
+                  <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Player2 Name</label>
+                  <%= f.text_field :player_name_2, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Name of Player2" %>
+                </div>
+                <div >
+                  <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Player2 Belongs</label>
+                  <%= f.text_field :belongs_2, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Belonging of Player2" %>
+                </div>
+                <div >
+                  <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Player2 Score</label>
+                  <%= f.text_field :score_2, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Score of Player2" %>
+                </div>
+              </div>
+              <%# Player2について %>
+            </div>
+          </div>  
+          <div >
+            <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Match Logs</label>
+            <%= f.text_area :log, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Write Logs" %>
+          </div>
+          <div class="d-grid gap-2 d-md-block">
+            <%= f.submit "Create Log", class:"btn btn-outline-success mt-5 mb-5" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</main>
+<%= render "shared/footer" %>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
