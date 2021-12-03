@@ -7,17 +7,20 @@
 
 <%= form_with model: @user, url: user_session_path, class: "justify-content-center", local: true do |f| %>
   <%= render "shared/error_messages", model: f.object%>
+  <% if alert %>
+    <div class="alert alert-warning">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
   <div class="bg-light">
   <div class="container">
   <div class="justify-content-center">
     <div>
       <label for="exampleFormControlInput1" class="form-label mt-5">Email address</label>
-      <%# <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"> %>
       <%= f.email_field :email, class:"form-control", id:"exampleFormControlInput1", placeholder:"name@example.com", autofocus: true %>
     </div>
     <div >
       <label for="exampleFormControlInput1" class="form-label">Password (6 characters minimum length)</label>
-      <%# <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password"> %>
       <%= f.password_field :password, class:"form-control", id:"exampleFormControlInput1", placeholder:"password123" %>
     </div>
 
