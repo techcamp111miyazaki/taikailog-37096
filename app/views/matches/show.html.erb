@@ -13,31 +13,59 @@
         <div class="col-md-10">
           <div class="card shadow-sm">
             <div class="card-body">
-              <p class="card-text text-center text-primary h2"><%= @match.turn.name %></p>
+              <% if @match.turn.name == "決勝" %>
+                <p class="card-text text-center text-danger h2"><strong><%= @match.turn.name %></strong></p>
+              <% else %>
+                <p class="card-text text-center text-primary h2"><strong><%= @match.turn.name %></strong></p>
+              <% end %>
               <p class="card-text text-center h3"><%= @match.field.name %></p>
               <div class="container">
                 <div class="row">
                   <div class="col-5">
-                    <p class="card-text text-center h4"><strong><%= @match.player_name_1 %></strong></p>
+                    <p class="card-text text-center h4"><strong><%= safe_join(@match.player_name_1.split("\n"),tag(:br)) %></strong></p>
                   </div>
                   <div class="col">
-                    <p class="card-text text-center h4"><strong> ー </strong></p>
+                    <p class="card-text text-center h4 "><strong> ー </strong></p>
                   </div>
                   <div class="col-5">
-                    <p class="card-text text-center h4"><strong><%= @match.player_name_2 %></strong></p>
+                    <p class="card-text text-center h4"><strong><%= safe_join(@match.player_name_2.split("\n"),tag(:br)) %></strong></p>
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-5">
-                    <p class="card-text text-center h4"><strong><%= @match.belongs_1 %></strong></p>
-                    <p class="card-text text-center h4"><strong><%= @match.score_1 %></strong></p>
+                    <p class="card-text text-center h4"><strong><%= safe_join(@match.belongs_1.split("\n"),tag(:br)) %></strong></p>
+                    <% if @match.score_1.present? && @match.score_2.present? %>
+                      <% if @match.score_1 < @match.score_2 %>
+                        <p class="card-text text-center text-black-50 h4"><%= @match.score_1 %></p>
+                      <% else %>
+                        <p class="card-text text-center h4"><strong><%= @match.score_1 %></strong></p>
+                      <% end %>
+                    <% else %>
+                      <p class="card-text text-center h4"><strong><%= @match.score_1 %></strong></p>
+                    <% end %>
                   </div>
-                  <div class="col">
-                  <p class="card-text text-center text-secondary h4">#<%= @match.order_number %></p>
+                  <div class="col d-flex align-items-center justify-content-center">
+                    <% if @match.order_number % 10 == 1 %>
+                      <p class="card-text text-center text-secondary h4">#<%= @match.order_number %>st</p>
+                    <% elsif @match.order_number % 10 == 2 %>
+                      <p class="card-text text-center text-secondary h4">#<%= @match.order_number %>nd</p>
+                    <% elsif @match.order_number % 10 == 3 %>
+                      <p class="card-text text-center text-secondary h4">#<%= @match.order_number %>rd</p>
+                    <% else %>
+                      <p class="card-text text-center text-secondary h4">#<%= @match.order_number %>th</p>
+                    <% end %>
                   </div>
                   <div class="col-5">
-                    <p class="card-text text-center h4"><strong><%= @match.belongs_2 %></strong></p>
-                    <p class="card-text text-center h4"><strong><%= @match.score_2 %></strong></p>
+                    <p class="card-text text-center h4"><strong><%= safe_join(@match.belongs_2.split("\n"),tag(:br)) %></strong></p>
+                     <% if @match.score_1.present? && @match.score_2.present? %>
+                      <% if @match.score_1 > @match.score_2 %>
+                        <p class="card-text text-center text-black-50 h4"><%= @match.score_2 %></p>
+                      <% else %>
+                        <p class="card-text text-center h4"><strong><%= @match.score_2 %></strong></p>
+                      <% end %>
+                    <% else %>
+                      <p class="card-text text-center h4"><strong><%= @match.score_2 %></strong></p>
+                    <% end %>
                   </div>
                 </div>
               </div>

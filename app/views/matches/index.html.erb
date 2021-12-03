@@ -16,7 +16,11 @@
           <div class="card shadow-sm">
             <%= link_to event_match_path(@event, match.id), class:"text-decoration-none" do %>
               <div class="card-body">
-                <p class="card-text text-center text-primary"><strong><%= match.turn.name %></strong></p>
+                <% if match.turn.name == "決勝" %>
+                  <p class="card-text text-center text-danger"><strong><%= match.turn.name %></strong></p>
+                <% else %>
+                  <p class="card-text text-center text-primary"><strong><%= match.turn.name %></strong></p>
+                <% end %>
                 <p class="card-text text-center text-black"><strong><%= match.field.name %></strong></p>
                 <div class="container"> 
                   <div class="row">
