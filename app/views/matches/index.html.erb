@@ -32,9 +32,13 @@
             </div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                <%= link_to "View", event_matches_path(@event), class:"btn btn-sm btn-outline-secondary" %>
+                <% if user_signed_in? %>
+                  <% if current_user.id == match.user.id %>
+                    <%= link_to "Edit", edit_event_match_path(@event, match.id), class:"btn btn-sm btn-outline-secondary" %>
+                    <%= link_to "Delete", event_match_path(@event, match.id), method: :delete, class:"btn btn-sm btn-outline-secondary" %>
+                  <% end %>
+                <% end %>
               </div>
               <small class="text-muted"><p class="card-text text-center text-secondary">#<%= match.order_number %></p></small>
             </div>
