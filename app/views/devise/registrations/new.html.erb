@@ -8,30 +8,30 @@
 <%= form_with model: @user, url: user_registration_path, class: "justify-content-center", local: true do |f| %>
   <%= render "shared/error_messages", model: f.object%>
   <div class="bg-light">
-  <div class="container">
-  <div class="justify-content-center">
-    <div >
-      <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Name</label>
-      <%= f.text_area :name, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Name", autofocus: true %>
-    </div>
-    <div >
-      <label for="exampleFormControlInput1" class="form-label">Email address</label>
-      <%= f.email_field :email, class:"form-control", id:"exampleFormControlInput1", placeholder:"name@example.com" %>
-    </div>
-    <div >
-      <label for="exampleFormControlInput1" class="form-label">Password (6 characters minimum length)</label>
-      <%= f.password_field :password, class:"form-control", id:"exampleFormControlInput1", placeholder:"password123" %>
-    </div>
-    <div >
-      <label for="exampleFormControlInput1" class="form-label">Password Confermation</label>
-      <%= f.password_field :password_confirmation, class:"form-control", id:"exampleFormControlInput1", placeholder:"password123" %>
-    </div>
+    <div class="container">
+      <div class="justify-content-center">
+        <div >
+          <label for="exampleFormControlInput1" class="form-label align-items-center mt-5">Name</label>
+          <%= f.text_area :name, class:"form-control", id:"exampleFormControlInput1" , placeholder:"Name", autofocus: true %>
+        </div>
+        <div >
+          <label for="exampleFormControlInput1" class="form-label">Email address</label>
+          <%= f.email_field :email, class:"form-control", id:"exampleFormControlInput1", placeholder:"name@example.com" %>
+        </div>
+        <div >
+          <label for="exampleFormControlInput1" class="form-label">Password (6 characters minimum length)</label>
+          <%= f.password_field :password, class:"form-control", id:"exampleFormControlInput1", placeholder:"password123" %>
+        </div>
+        <div >
+          <label for="exampleFormControlInput1" class="form-label">Password Confermation</label>
+          <%= f.password_field :password_confirmation, class:"form-control", id:"exampleFormControlInput1", placeholder:"password123" %>
+        </div>
 
-    <div class="d-grid gap-2 d-md-block">
-      <%= f.submit "Sign up", class:"btn btn-outline-success mt-5 mb-5" %>
+        <div class="d-grid gap-2 d-md-block">
+          <%= f.submit "Sign up", class:"btn btn-outline-success mt-5 mb-5" %>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
   </div>
 <% end %>
 
