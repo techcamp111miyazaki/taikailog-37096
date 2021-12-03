@@ -22,6 +22,23 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      @event.save
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to root_path
+  end
+
   private
   def event_params
     params.require(:event).permit(:event_title, :place, :prefecture_id, :genre_id, :date, :image).merge(user_id: current_user.id)
@@ -33,5 +50,10 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def redirect_not_admin
+    event = Event.find(params[:id])
+    redirect_to root_path unless current_user.id == event.user.id
   end
 end
