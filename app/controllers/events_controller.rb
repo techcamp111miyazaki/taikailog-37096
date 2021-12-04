@@ -8,6 +8,11 @@ class EventsController < ApplicationController
     @events = Event.order('created_at DESC')
   end
 
+  def search
+    @q = Event.ransack(params[:q])
+    @events = @q.result
+  end
+
   def new
     @event = Event.new
   end
