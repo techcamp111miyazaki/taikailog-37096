@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :matches
+    resources :matches do
+      collection do
+        get 'search'
+      end
+    end
   end
 end
