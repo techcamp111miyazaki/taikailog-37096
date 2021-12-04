@@ -36,10 +36,17 @@
       </div>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
-          <form class="d-flex">
+          <%= search_form_for Event.ransack(params[:q]), url: search_events_path, html: {class: "d-flex"} do |f| %>
+            <%= f.text_field :event_title, placeholder: "Search", class: 'form-control me-2' %>
+            <%= f.label :submit do %>
+              <input type="submit" value="Search" class="btn btn-outline-success">
+              <%= f.submit :submit, id: "q_submit", style: "display: none;"%>
+            <% end %>
+          <% end %>
+          <%# <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          </form> %>
         </div>
       </div>
 </header>
