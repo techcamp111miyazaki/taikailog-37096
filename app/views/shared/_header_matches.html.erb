@@ -47,22 +47,24 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">試合記録</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown04">
-                  <li><a class="dropdown-item" href="#">1回戦</a></li>
-                  <li><a class="dropdown-item" href="#">2回戦</a></li>
-                  <li><a class="dropdown-item" href="#">3回戦</a></li>
+                  <% @matches_turn.each do |turn_name| %>
+                    <li><a class="dropdown-item" href="#"><%= turn_name.turn.name %></a></li>
+                  <% end %>
+                  <%# <li><a class="dropdown-item" href="#">2回戦</a></li>
+                  <li><a class="dropdown-item" href="#">3回戦</a></li> %>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">１回戦</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" aria-current="page" href="#">追加</a>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">---</a>
               </li>
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <%= search_form_for @matches.ransack(params[:q]), url: search_event_matches_path(@event), html: {class: "d-flex"} do |f| %>
+            <%= f.text_field :player_name_1_or_player_name_2, placeholder: "Search", class: 'form-control me-2' %>
+            <%= f.label :submit do %>
+              <input type="submit" value="Search" class="btn btn-outline-success">
+              <%= f.submit :submit, id: "q_submit", style: "display: none;"%>
+            <% end %>
+          <% end %>
           </div>
         </div>
       </nav>

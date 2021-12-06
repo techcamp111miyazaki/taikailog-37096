@@ -1,10 +1,21 @@
 class MatchesController < ApplicationController
   before_action :set_event
   before_action :set_match, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_index, except: [:index, :show]
+  before_action :redirect_index, except: [:index, :search, :show]
 
   def index
     @matches = @event.matches
+    @matches_turn = @matches.select(:turn_id).distinct
+  end
+
+  def search
+    matches = @event.matches
+    if params[:q]&.dig(:player_name_1_or_player_name_2)
+      squished_keywords = params[:q][:player_name_1_or_player_name_2].squish
+      params[:q][:player_name_1_or_player_name_2_cont_any] = squished_keywords.split(" ")
+    end
+    @q = matches.ransack(params[:q])
+    @matches = @q.result
   end
 
   def new

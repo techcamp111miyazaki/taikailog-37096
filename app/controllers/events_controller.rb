@@ -1,11 +1,20 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :search]
   before_action :redirect_index, only: [:new, :create]
   before_action :set_event, only: [:edit, :update, :destroy]
   before_action :redirect_not_admin, only: [:edit, :update, :destroy]
 
   def index
     @events = Event.order('created_at DESC')
+  end
+
+  def search
+    if params[:q]&.dig(:event_title)
+      squished_keywords = params[:q][:event_title].squish
+      params[:q][:event_title_cont_any] = squished_keywords.split(" ")
+    end
+    @q = Event.ransack(params[:q])
+    @events = @q.result.reverse
   end
 
   def new
