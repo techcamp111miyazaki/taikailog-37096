@@ -5,6 +5,7 @@ class MatchesController < ApplicationController
 
   def index
     @matches = @event.matches
+    @matches_turn = @matches.select(:turn_id).distinct
   end
 
   def search
