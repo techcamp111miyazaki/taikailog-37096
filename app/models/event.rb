@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   validates :date,          presence: true
   
   belongs_to :user
-  has_many :matches
+  has_many :matches, dependent: :destroy
 
   has_one_attached :image
 
