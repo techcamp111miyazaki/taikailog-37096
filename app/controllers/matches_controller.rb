@@ -16,6 +16,7 @@ class MatchesController < ApplicationController
     end
     @q = matches.ransack(params[:q])
     @matches = @q.result
+    @matches_turn = @matches.select(:turn_id).distinct
   end
 
   def new
